@@ -25,6 +25,7 @@ module.exports = generators.Base.extend({
     },
     app: function() {
         this.mkdir('src');
+        this.copy('src/css/site.css', 'src/css/site.css')
         this.template('_package.json', 'package.json');
         this.copy('babelrc', '.babelrc');
         this.copy('files.js', 'files.js');
