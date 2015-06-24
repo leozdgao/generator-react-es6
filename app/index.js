@@ -1,4 +1,6 @@
 var generators = require('yeoman-generator');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = generators.Base.extend({
     constructor: function() {
@@ -19,19 +21,20 @@ module.exports = generators.Base.extend({
                 this.log(answers.name);
                 this.appname = answers.name;
                 done();
-            }.bind(this));  
+            }.bind(this));
         }
         else this.appname = this._appname;
     },
     app: function() {
-        this.mkdir('src');
-        this.copy('src/css/site.css', 'src/css/site.css')
         this.template('_package.json', 'package.json');
         this.copy('babelrc', '.babelrc');
         this.copy('files.js', 'files.js');
         this.copy('gulpfile.js', 'gulpfile.js');
-        this.copy('index.html', 'index.html');
         this.copy('webpack.config.js', 'webpack.config.js');
+        this.copy('config.js', 'config.js');
+        this.directory('server', 'server');
+        this.directory('src', 'src');
+        this.directory('util', 'util');
     },
     // install all dependencies after setup
     end: function() {

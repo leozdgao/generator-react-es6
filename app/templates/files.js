@@ -9,6 +9,9 @@ module.exports = {
     views: [
         'index.html'
     ],
+    vendor: [
+      './node_modules/react/dist/react.min.js'
+    ],
     destCss: 'style.css',
     release: './dist',
     entry: './index.html'

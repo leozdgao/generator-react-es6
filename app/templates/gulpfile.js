@@ -18,7 +18,7 @@ var del = require('del');
 
 // release
 gulp.task('default', ['release']);
-gulp.task('release', ['release:css', 'release:js']);
+gulp.task('release', ['release:css', 'release:js', 'copy:vendor']);
 
 gulp.task('release:css', function() {
 
@@ -47,6 +47,11 @@ gulp.task('release:js', function() { // add jslint and uTest later maybe
         .pipe(gulp.dest(files.release))
         // livereload when develop
         .pipe(connect.reload());
+});
+
+gulp.task('copy:vendor', function() {
+    return gulp.src(files.vendor)
+        .pipe(gulp.dest(files.release));
 });
 
 //-----------------------------------------------> for dev
